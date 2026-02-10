@@ -14,6 +14,7 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
+    //show the header
     return Scaffold(
       body: Column(
         children: [
@@ -50,6 +51,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          
+          // show the body
           FoodPageBody(),
         ],
       ),

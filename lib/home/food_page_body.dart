@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:foodeliver/utils/colors.dart' as Colora;
 import 'package:foodeliver/widgets/big_text.dart';
@@ -33,16 +34,32 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.redAccent,
-      height: 330,
-      child: PageView.builder(
-        controller: pageController,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return _buildPageItem(index);
-        },
-      ),
+    return Column(
+      children: [
+        Container(
+          // color: Colors.redAccent,
+          height: 330,
+          child: PageView.builder(
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return _buildPageItem(index);
+            },
+          ),
+        ),
+        new DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeColor: Colora.AppColors.mainColor,
+            activeShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -53,7 +70,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       var currTrans = _height * (1 - currScale) / 2;
       matrix = Matrix4.diagonal3Values(1, currScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
-        
     } else if (index == _currPageValue.floor() + 1) {
       var currScale =
           _scaleFactor + (_currPageValue - index + 1) * (1 - _scaleFactor);
@@ -61,17 +77,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       matrix = Matrix4.diagonal3Values(1, currScale, 1);
       matrix = Matrix4.diagonal3Values(1, currScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
-        
     } else if (index == _currPageValue.floor() - 1) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
       var currTrans = _height * (1 - currScale) / 2;
       matrix = Matrix4.diagonal3Values(1, currScale, 1);
       matrix = Matrix4.diagonal3Values(1, currScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
-        
     } else {
       var currScale = 0.8;
-      matrix = Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, _height*(1 - _scaleFactor) / 2, 1);
+      matrix = Matrix4.diagonal3Values(1, currScale, 1)
+        ..setTranslationRaw(0, _height * (1 - _scaleFactor) / 2, 1);
     }
 
     return Transform(
@@ -106,15 +121,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     blurRadius: 5,
                     offset: Offset(0, 5),
                   ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-5, 0),
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(5, 0),
-                  )
-                ]
+                  BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
+                  BoxShadow(color: Colors.white, offset: Offset(5, 0)),
+                ],
               ),
               child: Container(
                 padding: EdgeInsets.only(top: 15, left: 15, right: 15),
