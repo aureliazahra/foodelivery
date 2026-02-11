@@ -96,7 +96,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           Container(
             height: 220,
-            margin: EdgeInsets.symmetric(horizontal: 10),
+            margin: EdgeInsets.symmetric(horizontal: Dimension.width10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimension.radius30),
               color: index.isEven
@@ -116,8 +116,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 maxHeight:
                     Dimension.pageViewTextContainer + 20, 
               ),
-
-              margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
+              margin: EdgeInsets.symmetric(
+                horizontal: Dimension.width30,
+                vertical: Dimension.height15,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimension.radius20),
                 color: Colors.white,

@@ -3,6 +3,7 @@ import 'package:foodeliver/home/food_page_body.dart';
 import 'package:foodeliver/utils/colors.dart';
 import 'package:foodeliver/widgets/big_text.dart';
 import 'package:foodeliver/widgets/small_text.dart';
+import 'package:foodeliver/utils/dimension.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -20,8 +21,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
         children: [
           Container(
             child: Container(
-              margin: EdgeInsets.only(top: 45, bottom: 15),
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.only(top: Dimension.height45, bottom: Dimension.height15),
+              padding: EdgeInsets.symmetric(horizontal: Dimension.width20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,12 +39,12 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ),
                   Center(
                     child: Container(
-                      width: 45,
-                      height: 45,
-                      child: Icon(Icons.search, color: Colors.white),
+                      width: Dimension.height45,
+                      height: Dimension.height45,
+                      child: Icon(Icons.search, color: Colors.white, size: Dimension.iconSize24),
                       decoration: BoxDecoration(
                         color: AppColors.mainColor,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(Dimension.radius15),
                       ),
                     ),
                   ),
