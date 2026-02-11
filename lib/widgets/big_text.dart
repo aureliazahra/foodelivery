@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:foodeliver/utils/dimension.dart';
 
 class BigText extends StatelessWidget {
   Color? color;
@@ -22,8 +23,8 @@ class BigText extends StatelessWidget {
       maxLines: 1 ,
       overflow: overflow,
       style: GoogleFonts.roboto(
-        fontSize: size,
-        fontWeight: FontWeight.bold,
+        fontSize: size==0?Dimension.font10:size,
+        fontWeight: FontWeight.w400,
         color: color,
       ),
     );

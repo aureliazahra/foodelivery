@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:foodeliver/utils/colors.dart' as Colora;
+import 'package:foodeliver/utils/dimension.dart';
 import 'package:foodeliver/widgets/big_text.dart';
 import 'package:foodeliver/widgets/icon_and_text_widget.dart';
 import 'package:foodeliver/widgets/small_text.dart';
@@ -16,7 +17,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.60);
   var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = 220;
+  double _height = Dimension.pageViewContainer;
   @override
   void initState() {
     super.initState();
@@ -38,7 +39,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         Container(
           // color: Colors.redAccent,
-          height: 330,
+          height: Dimension.pageView,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
@@ -110,10 +111,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 160,
+              constraints: BoxConstraints(
+                minHeight: Dimension.pageViewTextContainer,
+                maxHeight:
+                    Dimension.pageViewTextContainer + 20, 
+              ),
+
               margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -126,12 +132,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 ],
               ),
               child: Container(
-                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                  top: Dimension.height10,
+                  left: 15,
+                  right: 15,
+                ),
                 child: Column(
+                  
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BigText(text: "Daging Rendang"),
-                    SizedBox(height: 10),
+                    SizedBox(height: Dimension.height10),
                     Row(
                       children: [
                         Wrap(
@@ -151,8 +162,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         SmallText(text: "comments"),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: Dimension.height20),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconAndTextWidget(
                           icon: Icons.circle_sharp,
