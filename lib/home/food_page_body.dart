@@ -98,7 +98,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             height: 220,
             margin: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimension.radius30),
               color: index.isEven
                   ? Colora.AppColors.mainColor
                   : Colora.AppColors.signColor,
@@ -119,7 +119,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
               margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Dimension.radius20),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
